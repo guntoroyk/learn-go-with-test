@@ -23,13 +23,25 @@ func TestArea(t *testing.T) {
 		}
 	}
 
-	t.Run("rectangles", func(t *testing.T) {
-		rectangle := Rectangle{10.0, 10.0}
-		checkArea(t, rectangle, 100.0)
-	})
+	// t.Run("rectangles", func(t *testing.T) {
+	// 	rectangle := Rectangle{10.0, 10.0}
+	// 	checkArea(t, rectangle, 100.0)
+	// })
 
-	t.Run("circles", func(t *testing.T) {
-		circle := Circle{10}
-		checkArea(t, circle, 314.1592653589793)
-	})
+	// t.Run("circles", func(t *testing.T) {
+	// 	circle := Circle{10}
+	// 	checkArea(t, circle, 314.1592653589793)
+	// })
+
+	allShapes := []struct {
+		shape Shape
+		want  float64
+	}{
+		{Rectangle{10.0, 10.0}, 100.0},
+		{Circle{10}, 314.1592653589793},
+	}
+
+	for _, tt := range allShapes {
+		checkArea(t, tt.shape, tt.want)
+	}
 }
